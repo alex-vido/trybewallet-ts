@@ -53,123 +53,125 @@ function WalletForm() {
   }, []);
 
   return (
-    <form
-      onSubmit={ handleSubmit }
-    >
-      <label htmlFor="value">
-        Valor
-        {' '}
-        <input
-          data-testid="value-input"
-          type="text"
-          id="value"
-          value={ value }
-          onChange={ handleChange }
-        />
-      </label>
-      <label htmlFor="description">
-        Descrição da despesa
-        {' '}
-        <input
-          data-testid="description-input"
-          type="text"
-          id="description"
-          value={ description }
-          onChange={ handleChange }
-        />
-      </label>
-      <label htmlFor="currency">
-        Moeda
-        {' '}
-        <select
-          data-testid="currency-input"
-          name="currency"
-          id="currency"
-          value={ currency }
-          onChange={ handleChange }
-        >
-          {currencies && (
-            currencies
-              .map((currencyOption, index) => (
-                <option
-                  key={ index }
-                  value={ currencyOption }
-                >
-                  { currencyOption }
-                </option>
-              )))}
-        </select>
-      </label>
-      <label htmlFor="method">
-        Método de pagamento
-        {' '}
-        <select
-          data-testid="method-input"
-          name="method"
-          id="method"
-          value={ method }
-          onChange={ handleChange }
-        >
-          <option
-            value="Dinheiro"
-          >
-            Dinheiro
-          </option>
-          <option
-            value="Cartão de crédito"
-          >
-            Cartão de crédito
-          </option>
-          <option
-            value="Cartão de débito"
-          >
-            Cartão de débito
-          </option>
-        </select>
-      </label>
-      <label htmlFor="tag">
-        Categoria da despesa
-        {' '}
-        <select
-          name="tag"
-          id="tag"
-          data-testid="tag-input"
-          value={ tag }
-          onChange={ handleChange }
-        >
-          <option
-            value="Alimentação"
-          >
-            Alimentação
-          </option>
-          <option
-            value="Lazer"
-          >
-            Lazer
-          </option>
-          <option
-            value="Trabalho"
-          >
-            Trabalho
-          </option>
-          <option
-            value="Transporte"
-          >
-            Transporte
-          </option>
-          <option
-            value="Saúde"
-          >
-            Saúde
-          </option>
-        </select>
-      </label>
-      <button
-        type="submit"
+    <div className="App">
+      <form
+        onSubmit={ handleSubmit }
       >
-        Adicionar despesa
-      </button>
-    </form>
+        <label htmlFor="value">
+          Valor
+          {' '}
+          <input
+            data-testid="value-input"
+            type="text"
+            id="value"
+            value={ value }
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="description">
+          Descrição da despesa
+          {' '}
+          <input
+            data-testid="description-input"
+            type="text"
+            id="description"
+            value={ description }
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="currency">
+          Moeda
+          {' '}
+          <select
+            data-testid="currency-input"
+            name="currency"
+            id="currency"
+            value={ currency }
+            onChange={ handleChange }
+          >
+            {currencies && (
+              currencies
+                .map((currencyOption, index) => (
+                  <option
+                    key={ index }
+                    value={ currencyOption }
+                  >
+                    { currencyOption }
+                  </option>
+                )))}
+          </select>
+        </label>
+        <label htmlFor="method">
+          Método de pagamento
+          {' '}
+          <select
+            data-testid="method-input"
+            name="method"
+            id="method"
+            value={ method }
+            onChange={ handleChange }
+          >
+            <option
+              value="Dinheiro"
+            >
+              Dinheiro
+            </option>
+            <option
+              value="Cartão de crédito"
+            >
+              Cartão de crédito
+            </option>
+            <option
+              value="Cartão de débito"
+            >
+              Cartão de débito
+            </option>
+          </select>
+        </label>
+        <label htmlFor="tag">
+          Categoria da despesa
+          {' '}
+          <select
+            name="tag"
+            id="tag"
+            data-testid="tag-input"
+            value={ tag }
+            onChange={ handleChange }
+          >
+            <option
+              value="Alimentação"
+            >
+              Alimentação
+            </option>
+            <option
+              value="Lazer"
+            >
+              Lazer
+            </option>
+            <option
+              value="Trabalho"
+            >
+              Trabalho
+            </option>
+            <option
+              value="Transporte"
+            >
+              Transporte
+            </option>
+            <option
+              value="Saúde"
+            >
+              Saúde
+            </option>
+          </select>
+        </label>
+        <button
+          type="submit"
+        >
+          Adicionar despesa
+        </button>
+      </form>
+    </div>
   );
 }
 
