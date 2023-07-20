@@ -1,5 +1,11 @@
+import WalletForm from '../components/WalletForm';
+
 function Wallet() {
-  return <div>TrybeWallet</div>;
+  return (
+    <div>
+      <WalletForm />
+    </div>
+  );
 }
 
 export default Wallet;

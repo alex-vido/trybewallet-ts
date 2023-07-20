@@ -39,7 +39,7 @@ function Login() {
           Senha:
           {' '}
           <input
-            type="text"
+            type="password"
             data-testid="password-input"
             value={ password }
             onChange={ (event) => setPassword(event.target.value) }
