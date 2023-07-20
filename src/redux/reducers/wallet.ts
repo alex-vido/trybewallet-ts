@@ -15,6 +15,9 @@ function wallet(state = INITIAL_STATE_WALLET, action: AnyAction) {
     case 'EXPENSES':
       return { ...state, expenses: [...state.expenses, action.payload] };
     case 'DELETE_EXPENSE':
+      if (state.expenses.length === 1) {
+        return { ...state, expenses: [] };
+      }
       return {
         ...state,
         expenses: [...state.expenses.filter((item) => item.id !== action.itemId)],

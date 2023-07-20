@@ -75,7 +75,6 @@ function Table() {
                     >
                       excluir
                     </button>
-
                   </td>
                 </tr>
               );
