@@ -1,11 +1,11 @@
-import { CurrencyType, WalletFormType } from '../../types';
+import { WalletFormType } from '../../types';
 
 export const actionUser = (email = '') => ({
   type: 'EMAIL',
   payload: email,
 });
 
-export const actionWallet = (currencies: CurrencyType[] = []) => ({
+export const actionWallet = (currencies: string[] = []) => ({
   type: 'WALLET',
   payload: currencies,
 });

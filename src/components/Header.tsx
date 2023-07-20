@@ -4,6 +4,12 @@ import { RootState } from '../types';
 function Header() {
   const email = useSelector((state: RootState) => state.user.email);
 
+  const { expenses } = useSelector((state: RootState) => {
+    return {
+      ...state.wallet,
+    };
+  });
+
   return (
     <header>
       <p
@@ -14,7 +20,11 @@ function Header() {
       <p
         data-testid="total-field"
       >
-        0
+        {
+        expenses.reduce((acc, curr) => (
+          acc + (Number(curr.value) * Number(curr.exchangeRates[curr.currency].ask))
+        ), 0).toFixed(2)
+        }
       </p>
       <p
         data-testid="header-currency-field"

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import thunkActionCreator from '../redux/actions/thunkActionCreator';
 import { DispatchType, RootState, WalletFormType } from '../types';
+import { actionExpenses } from '../redux/actions';
+import { fetchCurrencies } from '../services/api';
 
 function WalletForm() {
   const INITIAL_STATE_DATAWALLET = {
@@ -34,22 +36,21 @@ function WalletForm() {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const prevData = {
-      id: expenses.length,
-      value: '',
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
-      exchangeRates: {},
+    const data = {
+      ...dataWallet,
+      exchangeRates: await fetchCurrencies(),
     };
-    dispatch(thunkActionCreator());
-    // dispatch((prevData));
+    dispatch((actionExpenses(data)));
+    setDataWallet((prevData) => ({
+      ...INITIAL_STATE_DATAWALLET,
+      id: prevData.id + 1,
+    }));
   };
-
-  dispatch(thunkActionCreator());
+  useEffect(() => {
+    dispatch(thunkActionCreator());
+  }, []);
 
   return (
     <form
@@ -92,9 +93,9 @@ function WalletForm() {
               .map((currencyOption, index) => (
                 <option
                   key={ index }
-                  value={ currencyOption.code }
+                  value={ currencyOption }
                 >
-                  { currencyOption.code }
+                  { currencyOption }
                 </option>
               )))}
         </select>

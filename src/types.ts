@@ -27,14 +27,14 @@ export type WalletFormType = {
   currency: string;
   method: string;
   tag: string;
-  exchangeRates: CurrenciesType;
+  exchangeRates: { [key: string]: any };
 };
 
 export type DispatchType = ThunkDispatch<WalletFormType, null, AnyAction>;
 
 export type WalletReducer = {
-  currencies: CurrencyType[];
-  expenses: [];
+  currencies: string[];
+  expenses: WalletFormType[];
   editor: boolean;
   idToEdit: number;
 };
