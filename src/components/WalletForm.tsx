@@ -21,7 +21,7 @@ function WalletForm() {
 
   const { value, description, currency, method, tag } = dataWallet;
 
-  const { currencies, expenses } = useSelector((state: RootState) => {
+  const { currencies } = useSelector((state: RootState) => {
     return {
       ...state.wallet,
     };
