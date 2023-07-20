@@ -14,6 +14,12 @@ function wallet(state = INITIAL_STATE_WALLET, action: AnyAction) {
       return { ...state, currencies: action.payload };
     case 'EXPENSES':
       return { ...state, expenses: [...state.expenses, action.payload] };
+    case 'DELETE_EXPENSE':
+      return {
+        ...state,
+        expenses: [...state.expenses.filter((item) => item.id !== action.itemId)],
+      };
+
     default:
       return state;
   }

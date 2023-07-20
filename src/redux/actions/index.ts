@@ -14,3 +14,8 @@ export const actionExpenses = (expenses: WalletFormType) => ({
   type: 'EXPENSES',
   payload: expenses,
 });
+
+export const actionDelete = (id: number) => ({
+  type: 'DELETE_EXPENSE',
+  itemId: id,
+});

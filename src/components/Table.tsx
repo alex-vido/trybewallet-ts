@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { DispatchType, RootState } from '../types';
+import { actionDelete } from '../redux/actions';
 
 function Table() {
+  const dispatch: DispatchType = useDispatch();
   const { expenses } = useSelector((state: RootState) => {
     return {
       ...state.wallet,
@@ -10,8 +12,15 @@ function Table() {
   });
 
   useEffect(() => {
-    console.log(expenses);
+
   }, [expenses]);
+
+  const handleDelete = (
+    key: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    index: number,
+  ) => {
+    dispatch(actionDelete(index));
+  };
 
   return (
     <table>
@@ -36,25 +45,38 @@ function Table() {
                 <tr
                   key={ index }
                 >
-                  <td>{ expense.description }</td>
-                  <td>{ expense.tag }</td>
-                  <td>{ expense.method }</td>
-                  <td>{ Number(expense.value).toFixed(2) }</td>
-                  <td>{ expense.exchangeRates[expense.currency].name }</td>
+                  <td><p>{ expense.description }</p></td>
+                  <td><p>{ expense.tag }</p></td>
+                  <td><p>{ expense.method }</p></td>
+                  <td><p>{ Number(expense.value).toFixed(2) }</p></td>
+                  <td><p>{ expense.exchangeRates[expense.currency].name }</p></td>
                   <td>
-                    {
+                    <p>
+                      {
                     Number(expense.exchangeRates[expense.currency].ask)
                       .toFixed(2)
                     }
-
+                    </p>
                   </td>
                   <td>
-                    {
+                    <p>
+                      {
                   (Number(expense.value)
                   * Number(expense.exchangeRates[expense.currency].ask)).toFixed(2)
                   }
+                    </p>
                   </td>
-                  <td>Real</td>
+                  <td><p>Real</p></td>
+                  <td><button>editar</button></td>
+                  <td>
+                    <button
+                      data-testid="delete-btn"
+                      onClick={ (event) => handleDelete(event, index) }
+                    >
+                      excluir
+                    </button>
+
+                  </td>
                 </tr>
               );
             })
