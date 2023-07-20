@@ -16,10 +16,9 @@ function Table() {
   }, [expenses]);
 
   const handleDelete = (
-    key: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number,
+    id: number,
   ) => {
-    dispatch(actionDelete(index));
+    dispatch(actionDelete(id));
   };
 
   return (
@@ -40,10 +39,10 @@ function Table() {
       <tbody>
         {
           expenses.length > 0 && (
-            expenses.map((expense, index) => {
+            expenses.map((expense) => {
               return (
                 <tr
-                  key={ index }
+                  key={ expense.id }
                 >
                   <td><p>{ expense.description }</p></td>
                   <td><p>{ expense.tag }</p></td>
@@ -67,11 +66,10 @@ function Table() {
                     </p>
                   </td>
                   <td><p>Real</p></td>
-                  <td><button>editar</button></td>
                   <td>
                     <button
                       data-testid="delete-btn"
-                      onClick={ (event) => handleDelete(event, index) }
+                      onClick={ () => handleDelete(expense.id) }
                     >
                       excluir
                     </button>
