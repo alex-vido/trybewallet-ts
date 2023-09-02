@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import thunkActionCreator from '../redux/actions/thunkActionCreator';
-import { DispatchType, RootState, WalletFormType } from '../types';
-import { actionExpenses } from '../redux/actions';
-import { fetchCurrencies } from '../services/api';
+import thunkActionCreator from '../../redux/actions/thunkActionCreator';
+import { DispatchType, RootState, WalletFormType } from '../../types';
+import { actionExpenses } from '../../redux/actions';
+import { fetchCurrencies } from '../../services/api';
+import styles from './WalletForm.module.css';
 
 function WalletForm() {
   const INITIAL_STATE_DATAWALLET = {
@@ -48,30 +49,24 @@ function WalletForm() {
       id: prevData.id + 1,
     }));
   };
+
   useEffect(() => {
     dispatch(thunkActionCreator());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="App">
-      <form
-        onSubmit={ handleSubmit }
+    <form
+      onSubmit={ handleSubmit }
+    >
+      <div
+        className={ styles.walletForm }
       >
-        <label htmlFor="value">
-          Valor
-          {' '}
-          <input
-            data-testid="value-input"
-            type="text"
-            id="value"
-            value={ value }
-            onChange={ handleChange }
-          />
-        </label>
         <label htmlFor="description">
           Descrição da despesa
           {' '}
           <input
+            className={ styles.descriptionInput }
             data-testid="description-input"
             type="text"
             id="description"
@@ -79,59 +74,11 @@ function WalletForm() {
             onChange={ handleChange }
           />
         </label>
-        <label htmlFor="currency">
-          Moeda
-          {' '}
-          <select
-            data-testid="currency-input"
-            name="currency"
-            id="currency"
-            value={ currency }
-            onChange={ handleChange }
-          >
-            {currencies && (
-              currencies
-                .map((currencyOption, index) => (
-                  <option
-                    key={ index }
-                    value={ currencyOption }
-                  >
-                    { currencyOption }
-                  </option>
-                )))}
-          </select>
-        </label>
-        <label htmlFor="method">
-          Método de pagamento
-          {' '}
-          <select
-            data-testid="method-input"
-            name="method"
-            id="method"
-            value={ method }
-            onChange={ handleChange }
-          >
-            <option
-              value="Dinheiro"
-            >
-              Dinheiro
-            </option>
-            <option
-              value="Cartão de crédito"
-            >
-              Cartão de crédito
-            </option>
-            <option
-              value="Cartão de débito"
-            >
-              Cartão de débito
-            </option>
-          </select>
-        </label>
         <label htmlFor="tag">
           Categoria da despesa
           {' '}
           <select
+            className={ styles.tagInput }
             name="tag"
             id="tag"
             data-testid="tag-input"
@@ -165,13 +112,81 @@ function WalletForm() {
             </option>
           </select>
         </label>
+        <label htmlFor="value">
+          Valor
+          {' '}
+          <input
+            className={ styles.valueInput }
+            data-testid="value-input"
+            type="number"
+            id="value"
+            value={ value }
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="currency">
+          Moeda
+          {' '}
+          <select
+            className={ styles.valueCoin }
+            data-testid="currency-input"
+            name="currency"
+            id="currency"
+            value={ currency }
+            onChange={ handleChange }
+          >
+            {currencies && (
+              currencies
+                .map((currencyOption, index) => (
+                  <option
+                    key={ index }
+                    value={ currencyOption }
+                  >
+                    { currencyOption }
+                  </option>
+                )))}
+          </select>
+        </label>
+        <label htmlFor="method">
+          Método de pagamento
+          {' '}
+          <select
+            className={ styles.methodInput }
+            data-testid="method-input"
+            name="method"
+            id="method"
+            value={ method }
+            onChange={ handleChange }
+          >
+            <option
+              value="Dinheiro"
+            >
+              Dinheiro
+            </option>
+            <option
+              value="Cartão de crédito"
+            >
+              Cartão de crédito
+            </option>
+            <option
+              value="Cartão de débito"
+            >
+              Cartão de débito
+            </option>
+          </select>
+        </label>
+      </div>
+      <div
+        className={ styles.submitButtonDiv }
+      >
         <button
           type="submit"
+          className={ styles.submitButton }
         >
           Adicionar despesa
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 

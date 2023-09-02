@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import styles from './Login.module.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -22,13 +23,28 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={ handleSubmit }>
+    <div
+      className={ styles.card }
+    >
+      <h1
+        className={ styles.title }
+      >
+        <span
+          className={ styles.trybe }
+        >
+          Trybe
+        </span>
+        Wallet
+
+      </h1>
+      <form
+        onSubmit={ handleSubmit }
+        className={ styles.form }
+      >
         <label htmlFor="email">
-          Email:
-          {' '}
           <input
+            className={ styles.input }
+            placeholder="Email"
             type="text"
             data-testid="email-input"
             value={ email }
@@ -36,9 +52,9 @@ function Login() {
           />
         </label>
         <label htmlFor="password">
-          Senha:
-          {' '}
           <input
+            className={ styles.input }
+            placeholder="Senha"
             type="password"
             data-testid="password-input"
             value={ password }
@@ -46,6 +62,7 @@ function Login() {
           />
         </label>
         <button
+          className={ styles.button }
           type="submit"
           disabled={ !(emailValidator.test(email) && password.length >= 6) }
         >

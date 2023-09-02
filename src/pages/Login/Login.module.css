@@ -1,0 +1,68 @@
+.card {
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: center;
+  padding: 20px 50px;
+  width: 40vw;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  color: #2fc18c;
+  font-size: 40px;
+}
+
+.title:before {
+  content: url('../../static/images/logo.svg');
+  height: 50px;
+  width: 50px;
+}
+
+.trybe {
+  color: #003be5;
+  font-weight: 100;
+}
+
+.input {
+  border: 1px solid #003be5;
+  color: #003be5;
+  margin-bottom: 10px;
+}
+
+.input::placeholder {
+  color: #003be5;
+}
+
+.input , .button {
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 10px;
+  width: 300px;
+}
+
+.button {
+  background-color: #003be5;
+  border: 1px solid #003be5;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:disabled {
+  background-color: white;
+  border-color: #cfcfcf;
+  color: #cfcfcf;
+  cursor: not-allowed;
+}

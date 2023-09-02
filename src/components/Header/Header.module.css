@@ -1,0 +1,36 @@
+.header {
+  background-color: white;
+  display: flex;
+  height: 130px;
+  justify-content: space-around;
+  left: 15%;
+  position: absolute;
+  right: 15%;
+  top: 0;
+  width: 70%;
+  z-index: 1;
+}
+
+.trybe {
+  color: #003be5;
+  font-weight: 100;
+}
+
+.titleCard , .totalCard , .emailCard {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+
+.logo {
+  position: relative;
+  top: -20px;
+}
+
+.totalCard {
+  color: #003be5;
+}
+
+.emailCard {
+  color: #2fc18c;
+}

@@ -1,0 +1,60 @@
+.walletForm {
+  align-items: center;
+  background-color: rgba(240, 242, 245, 1);
+  color: #003be5;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 0 20px;
+  height: 130px;
+  justify-content: space-evenly;
+  left: 15%;
+  padding: 0 5%;
+  position: absolute;
+  right: 15%;
+  top: 130px;
+  width: 60%;
+  z-index: 2;
+}
+
+.valueInput , .valueCoin , .descriptionInput , .methodInput , .tagInput {
+  background-color: rgba(240, 242, 245, 1);
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  color: #003be5;
+  flex-shrink: 0;
+  font-size: 14px;
+  height: 20px;
+  padding: 1px 10px;
+}
+
+.submitButtonDiv {
+  align-items: center;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  height: 130px;
+  justify-content: center;
+  left: 15%;
+  position: absolute;
+  right: 15%;
+  top: 260px;
+  width: 70%;
+  z-index: 2;
+}
+
+.submitButton {
+  background: #2fc18c;
+  border: 1px solid #2fc18c;
+  border-radius: 5px;
+  color: white;
+  flex-shrink: 0;
+  font-size: 14px;
+  height: 40px;
+  width: 330px;
+}
+
